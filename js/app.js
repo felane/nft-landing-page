@@ -11,7 +11,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const updateButton = async () => {
     if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
-      onboardButton.innerText = 'Install MetaMask!';
+      onboardButton.innerText = 'Install MetaMask';
       onboardButton.onclick = () => {
         onboardButton.innerText = 'Connecting...';
         onboardButton.disabled = true;
@@ -23,13 +23,14 @@ window.addEventListener('DOMContentLoaded', () => {
       onboarding.stopOnboarding();
       checkOwner(accounts[0]);
     } else {
-      onboardButton.innerText = 'Connect MetaMask!';
+      onboardButton.innerText = 'Connect MetaMask';
       onboardButton.onclick = async () => {
         await window.ethereum.request({
           method: 'eth_requestAccounts',
         })
         .then(function(accounts) {
-          onboardButton.innerText = `✔ ...${accounts[0].slice(-4)}`;
+          //onboardButton.innerText = `✔ ...${accounts[0].slice(-4)}`;
+          onboardButton.innerText = `✔.. Connected`;
           onboardButton.disabled = true;
           checkOwner(accounts[0]);
         });
